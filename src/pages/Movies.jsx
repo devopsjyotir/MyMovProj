@@ -12,9 +12,9 @@ const allMovies = useSelector((state) => state.allMovies)
 const [movieAddMode, setMovieAddMode] = useState(false)
 const [formValues, setFormValues] = useState({
     title:'',
-    year: null,
+    year: '',
     image: '',
-    rating: null,
+    rating: '',
     genre: '',
     description:''
 })
@@ -28,22 +28,27 @@ const disableAddMovieMode = () => {
 }
 
 const handleChange = (e) => {
-    setFormValues({...formValues, [e.target.name]: e.target.value})
+    // console.log(formValues)
+    setFormValues({...formValues, [e.target.id]: e.target.value})
 }
 
 const handleSubmit = async (e) => {
-    e.preventDefualt()
+    e.preventDefault()
+    try{
     let createdMovie = await AddMovie(formValues)
     disableAddMovieMode()
     setFormValues({
         title:'',
-        year: null,
+        year: '',
         image: '',
-        rating: null,
+        rating: '',
         genre: '',
         description:''
     })
-    setNeedRefresh(true)
+    setNeedRefresh(true);
+} catch (error) {
+    throw error
+  }
 }
 
 useEffect(()=> {
@@ -59,7 +64,7 @@ useEffect(()=> {
 }, [needRefresh])
 
 let addButtonRender = (
-    <button disabled>
+    <button>
         Add Movie
     </button>
 )
@@ -88,6 +93,7 @@ if(movieAddMode) {
             onChange={handleChange}
             value={formValues.title}
             type='text'
+            id="title"
             placeholder='Thor' 
             /> 
 
@@ -95,8 +101,9 @@ if(movieAddMode) {
             <input
             onChange={handleChange}
             value={formValues.year}
-            type='number'
+            type="number" 
             placeholder='2001' 
+            id='year'
             /> 
 
             <label>Movie Image</label>
@@ -104,13 +111,15 @@ if(movieAddMode) {
             onChange={handleChange}
             value={formValues.image}
             type='text'
+            id='image'
             /> 
 
             <label>Movie rating</label>
             <input
             onChange={handleChange}
             value={formValues.rating}
-            type='number'
+            type="number" 
+            id='rating'
             /> 
 
             <label>Genre</label>
@@ -118,6 +127,7 @@ if(movieAddMode) {
             onChange={handleChange}
             value={formValues.genre}
             type='text'
+            id='genre'
             /> 
 
             <label>Movie Description</label>
@@ -126,6 +136,7 @@ if(movieAddMode) {
             value={formValues.description}
             type='text'
             placeholder='Thor' 
+            id='description'
             /> 
 
             {addButtonRender}

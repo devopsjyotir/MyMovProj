@@ -1,4 +1,5 @@
 import axios from 'axios'
+import Client from './api'
 
 
 export const AddMovie = async (data) => {
@@ -12,7 +13,7 @@ export const AddMovie = async (data) => {
 
 
 
-export const GetMovieList = async (data) => {
+export const GetMovieList = async () => {
     try{
         let response = await axios.get("http://localhost:3001/api/movies/")
         return response.data
