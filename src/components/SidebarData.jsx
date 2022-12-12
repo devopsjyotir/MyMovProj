@@ -12,12 +12,19 @@ export const SidebarData = [
     icon: <AiIcons.AiFillHome />,
     cName: "nav-text",
   },
-  // {
-  //   title: "Reports",
-  //   path: "/reports",
-  //   icon: <IoIcons.IoIosPaper />,
-  //   cName: "nav-text",
-  // },
+  {
+    title: "Register",
+    path: "/register",
+    icon: <IoIcons.IoIosPaper />,
+    cName: "nav-text",
+   },
+
+   {
+    title: "Movies",
+    path: "/movies",
+    icon: <IoIcons.IoIosPaper />,
+    cName: "nav-text",
+   },
   // {
   //   title: "Products",
   //   path: "/products",

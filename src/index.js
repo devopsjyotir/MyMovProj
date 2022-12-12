@@ -13,6 +13,11 @@ import Home from './pages/Home'
 
 import Navbar from "./components/Navbar";
 import "./App.css";
+import Register from "./pages/Register";
+import { Provider } from "react-redux";
+import allReducers from './reducers'
+import {createStore} from 'redux'
+import Movies from "./pages/Movies";
 
 const AppLayout = () => (
   <>
@@ -31,6 +36,11 @@ const AppLayout = () => (
 //   )
 // );
 
+const store = createStore(
+  allReducers,
+  window._REDUX_DEVTOOLS_EXTENSION_ && window._REDUX_DEVTOOLS_EXTENSION_()
+)
+
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -39,10 +49,15 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-      // {
-      //   path: "products",
-      //   element: <Products />,
-      // },
+      {
+         path: "register",
+         element: <Register />,
+       },
+
+       {
+        path: "movies",
+        element: <Movies />,
+      },
       // {
       //   path: "reports",
       //   element: <Reports />,
@@ -52,6 +67,8 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
+  <Provider store={store}>
   <RouterProvider router={router} />
+  </Provider>
 );
 
