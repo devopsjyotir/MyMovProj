@@ -18,23 +18,39 @@ import { Provider } from "react-redux";
 import allReducers from './reducers'
 import {createStore} from 'redux'
 import Movies from "./pages/Movies";
+import { useState } from "react";
 
-const AppLayout = () => (
+
+
+
+
+
+const AppLayout = () => {
+
+  const [authenticated, toggleAuthenticated] = useState(false)
+  const [user, setUser] = useState(null)
+  
+  const handleLogOut = () => {
+    setUser(null)
+    toggleAuthenticated(false)
+    localStorage.clear()
+  }
+
+
+return(
   <>
-    <Navbar />
+  
+    <Navbar 
+    authenticated={authenticated}
+    user={user}
+    handleLogOut={handleLogOut}
+    />
+  
     <Outlet />
   </>
-);
+)
+};
 
-// const router = createBrowserRouter(
-//   createRoutesFromElements(
-//     <Route element={<AppLayout />}>
-//       <Route path="/" element={<Home />} />
-//       <Route path="/products" element={<Products />} />
-//       <Route path="/reports" element={<Reports />} />
-//     </Route>
-//   )
-// );
 
 const store = createStore(
   allReducers,

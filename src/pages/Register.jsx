@@ -3,20 +3,18 @@ import { useState } from "react";
 import axios from "axios";
 
 const Register = () => {
-
-    const initialState = {
-        first_name: "",
-        last_name: "",
-        email: "",
-      };
-      const [formState, setFormState] = useState(initialState);
-
+  const [formValues, setFormValues] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  })
  
   
 
       const handleSubmit = async (event) => {
       event.preventDefault();
-      let res = await axios.post("http://localhost:3001/api/users/", formState)
+      let res = await axios.post("http://localhost:3001/api/users/", formValues)
       .then((response) => {
         return response
       })
@@ -24,34 +22,74 @@ const Register = () => {
         console.log(error)
       })
       console.log(res);
-      setFormState(initialState);
+      setFormValues(formValues);
     }
 
     const handleChange = (event) => {
-        setFormState({ ...formState, [event.target.id]: event.target.value });
+        setFormValues({ ...formValues, [event.target.name]: event.target.value });
      
       };
   
-    return (
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={formState.first_name}  id="first_name"  onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Last Name:
-          <input type="text" value={formState.last_name}  id="last_name"  onChange={handleChange} />
-        </label>
-        <br />
-        <label>
-          Email:
-          <input type="email" value={formState.email}  id="email"  onChange={handleChange} />
-        </label>
-        <br />
-        <button type="submit">Register</button>
-      </form>
-    );
+      return (
+        <div className="signin col">
+          <div className="card-overlay centered">
+            <form className="col" onSubmit={handleSubmit}>
+              <div className="input-wrapper">
+                <label htmlFor="name">Name</label>
+                <input
+                  onChange={handleChange}
+                  name="name"
+                  type="text"
+                  placeholder="John Smith"
+                  value={formValues.name}
+                  required
+                />
+              </div>
+              <div className="input-wrapper">
+                <label htmlFor="email">Email</label>
+                <input
+                  onChange={handleChange}
+                  name="email"
+                  type="email"
+                  placeholder="example@example.com"
+                  value={formValues.email}
+                  required
+                />
+              </div>
+    
+              <div className="input-wrapper">
+                <label htmlFor="password">Password</label>
+                <input
+                  onChange={handleChange}
+                  type="password"
+                  name="password"
+                  value={formValues.password}
+                  required
+                />
+              </div>
+              <div className="input-wrapper">
+                <label htmlFor="confirmPassword">Confirm Password</label>
+                <input
+                  onChange={handleChange}
+                  type="password"
+                  name="confirmPassword"
+                  value={formValues.confirmPassword}
+                  required
+                />
+              </div>
+              <button
+                disabled={
+                  !formValues.email ||
+                  (!formValues.password &&
+                    formValues.confirmPassword === formValues.password)
+                }
+              >
+                Sign In
+              </button>
+            </form>
+          </div>
+        </div>
+      )
 }
 
 export default Register
