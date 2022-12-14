@@ -2,13 +2,16 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {updateAllMovies} from '../actions'
-import {AddMovie, GetMovieList} from '../services/MovieServices'
+import {AddMovie, GetMovieList, DeleteMovie} from '../services/MovieServices'
 import MovieCard from '../components/MovieCard'
+import { useNavigate } from 'react-router-dom'
 
-const Movies = () => {
+const Movies = ({ user, authenticated }) => {
+
+    let navigate = useNavigate()
 const [needRefresh, setNeedRefresh] = useState([true])
 const dispatch = useDispatch()
-const allMovies = useSelector((state) => state.allMovies)
+const allMoviesList = useSelector((state) => state.allMoviesList)
 const [movieAddMode, setMovieAddMode] = useState(false)
 const [formValues, setFormValues] = useState({
     title:'',
@@ -51,6 +54,8 @@ const handleSubmit = async (e) => {
   }
 }
 
+
+
 useEffect(()=> {
     let getMoviesList = async () => {
         let data = await GetMovieList()
@@ -88,7 +93,7 @@ let movieAddRender = (
 if(movieAddMode) {
     movieAddRender = (
         <form onSubmit={handleSubmit}>
-            <label>Movie Name</label>
+            <label>Movie Title</label>
             <input
             onChange={handleChange}
             value={formValues.title}
@@ -147,26 +152,27 @@ if(movieAddMode) {
 
 let movieListRender = (
     <div>
-        {allMovies.map((mov) => (
-            <MovieCard key={mov.id} movie={mov} />
+        {allMoviesList.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
         ))}
     </div>
 )
 
 
-let toRender = (
+
+
+
+  return (
     <div>
-        <div>
-            <h1>Movies</h1>
-            <div>{movieAddRender}</div>
-            <div>{movieListRender}</div>
-        </div>
+    <div>
+        <h1>Movies</h1>
+        <div>{movieAddRender}</div>
+        <div>{movieListRender}</div>
     </div>
-)
-
-
-  return toRender
+</div>
+ 
   
+  )
 
 }
 

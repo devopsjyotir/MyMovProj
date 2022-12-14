@@ -33,4 +33,19 @@ export const SidebarData = [
     cName: "nav-text",
    },
 
+   {
+    title: "List",
+    path: "/moviespage",
+    icon: <IoIcons.IoIosPaper />,
+    cName: "nav-text",
+   },
+
+   {
+    title: "Users",
+    path: "/users",
+    icon: <IoIcons.IoIosPaper />,
+    cName: "nav-text",
+   },
+
+
 ];

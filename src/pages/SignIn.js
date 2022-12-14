@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { SignInUser } from '../services/Auth'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -7,6 +8,7 @@ import { SignInUser } from '../services/Auth'
 const SignIn = (props) => {
   
   const [formValues, setFormValues] = useState({ email: '', password: '' })
+  let navigate = useNavigate()
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -17,6 +19,8 @@ const SignIn = (props) => {
     const payload = await SignInUser(formValues)
     setFormValues({ email: '', password: '' })
     props.setUser(payload)
+    props.toggleAuthenticated(true)
+    navigate('/movies')
   }
 
   return (
