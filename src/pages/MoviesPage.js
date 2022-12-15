@@ -50,7 +50,7 @@ const MoviesPage =() =>{
 
       {movies.map(movie => (
         <div key={movie.id} className='movies-card'>
-          {/* <div className='list'> */}
+       
          
  <div className='list'>
  <div className='item'>
@@ -60,7 +60,7 @@ const MoviesPage =() =>{
           <div className='info-wrapper flex-col'>
           <h4>{movie.title}</h4>
           <h4>Average Rating:  {movie.vote_average}</h4>
-          {/* <p>{movie.overview}</p> */}
+       
          
           <div className='button'>
         <button onClick={() => handleAddMovie(movie)}>Add Movie</button>

@@ -12,6 +12,7 @@ import {  useEffect } from 'react'
 import MoviesPage from './pages/MoviesPage'
 import Users from './pages/Users'
 import UserDetails from './pages/UserDetails'
+import TopNav from './components/TopNav'
 
 const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -41,6 +42,9 @@ const App = () => {
 
   return (
     <div className="App">
+      <header>
+        <TopNav />
+      </header>
       <Navbar
         authenticated={authenticated}
         user={user}

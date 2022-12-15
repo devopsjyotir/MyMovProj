@@ -93,8 +93,8 @@ let movieAddRender = (
 
 if(movieAddMode) {
     movieAddRender = (
-        <form onSubmit={handleSubmit}>
-            <label>Movie Title</label>
+        <form onSubmit={handleSubmit} className="course-form">
+            <label>Title</label>
             <input
             onChange={handleChange}
             value={formValues.title}
@@ -141,7 +141,7 @@ if(movieAddMode) {
             onChange={handleChange}
             value={formValues.description}
             type='text'
-            placeholder='Thor' 
+            placeholder='Very Boring Movie' 
             id='description'
             /> 
 
@@ -164,20 +164,10 @@ let movieListRender = (
 
 
 return (
-    // <div className='movies-cont'>
-    //   {!authenticated && (
-    //     <div>
-    //       You must be authenticated to view this page.
-    //     </div>
-    //   )}
       <div>
-        {/* <h1>Movies</h1> */}
-        <div>{movieAddRender}</div>
+        <div className='add-movie-btn'>{movieAddRender}</div>
         <div>{movieListRender}</div>
     </div>
-// </div>
- 
-  
   )
 
 }
