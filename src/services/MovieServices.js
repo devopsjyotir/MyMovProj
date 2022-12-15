@@ -4,7 +4,7 @@ import Client from './api'
 
 export const AddMovie = async (data) => {
     try{
-        let response = await axios.post("http://localhost:3001/api/movies", data)
+        let response = await axios.post("http://localhost:3001/api/movies/", data)
         console.log('post data', response.data)
         return response.data
     } catch (error) {

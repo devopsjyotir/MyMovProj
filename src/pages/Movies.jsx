@@ -5,6 +5,7 @@ import {updateAllMovies} from '../actions'
 import {AddMovie, GetMovieList, DeleteMovie} from '../services/MovieServices'
 import MovieCard from '../components/MovieCard'
 import { useNavigate } from 'react-router-dom'
+import '../styles/MovieCard.css'
 
 const Movies = ({ user, authenticated }) => {
 
@@ -151,7 +152,7 @@ if(movieAddMode) {
 
 
 let movieListRender = (
-    <div>
+    <div className='movies-grid'>
         {allMoviesList.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
         ))}
@@ -162,14 +163,19 @@ let movieListRender = (
 
 
 
-  return (
-    <div>
-    <div>
-        <h1>Movies</h1>
+return (
+    // <div className='movies-cont'>
+    //   {!authenticated && (
+    //     <div>
+    //       You must be authenticated to view this page.
+    //     </div>
+    //   )}
+      <div>
+        {/* <h1>Movies</h1> */}
         <div>{movieAddRender}</div>
         <div>{movieListRender}</div>
     </div>
-</div>
+// </div>
  
   
   )

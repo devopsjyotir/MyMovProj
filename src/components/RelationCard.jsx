@@ -1,7 +1,7 @@
 import React from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { updateAllMovies } from '../actions';
-
+import '../styles/MovieCard.css'
 import { DeleteMovie } from '../services/MovieServices';
 
 const RelationCard = ({ relation }) => {
@@ -22,23 +22,31 @@ const RelationCard = ({ relation }) => {
   }
 
   const movieName = allMoviesList.find(movie => movie.id === relation.movieId).title;
+  const movieDescription = allMoviesList.find(movie => movie.id === relation.movieId).description;
 
   const handleDelete = (id) => {
     DeleteMovie(id)
       .then(() => {
-        // Dispatch an action to update the list of movies in the Redux store
+  
         dispatch(updateAllMovies(allMoviesList.filter(movie => movie.id !== id)));
       });
   };
 
   return (
-    <div>
-      <ul>
-        <li>
-          <span>{movieName}</span>
-          <button onClick={() => handleDelete(relation.movieId)}>delete</button>
-        </li>
-      </ul>
+    <div className='movies-card'>
+     <div className='list'>
+  <div className='item'>
+     <img src={`https://image.tmdb.org/t/p/w200${movie.image}`} alt={movie.title} />
+     <div className='info-wrapper flex-col'>
+     <h4>{movieName}</h4>
+     <p>{movieDescription}</p>
+     </div>
+    
+    </div>
+    <div className='button'>
+          <button onClick={() => handleDelete(relation.movieId)}>Remove</button>
+          </div>
+    </div>
     </div>
   );
 };

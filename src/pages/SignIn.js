@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 
-const SignIn = (props) => {
+const SignIn = (props, {user}) => {
   
   const [formValues, setFormValues] = useState({ email: '', password: '' })
   let navigate = useNavigate()
@@ -20,7 +20,7 @@ const SignIn = (props) => {
     setFormValues({ email: '', password: '' })
     props.setUser(payload)
     props.toggleAuthenticated(true)
-    navigate('/movies')
+    navigate(`/users/${user.id}/${user.name}`)
   }
 
   return (

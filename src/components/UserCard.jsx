@@ -1,4 +1,4 @@
-// import '../styles/Students.css'
+import '../styles/Users.css'
 import { useNavigate } from "react-router-dom";
 
 const UserCard = ({user}) => {
@@ -6,6 +6,9 @@ const UserCard = ({user}) => {
     const toDetail = () => {
         navigate(`/users/${user.id}/${user.name}`)
     }
+
+
+    
     return (
     <div className="student-card-containter">
         <ul onClick={toDetail}>

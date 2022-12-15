@@ -20,30 +20,30 @@ export const SidebarData = [
    },
 
    {
-    title: "Movies",
+    title: "Favoties",
     path: "/movies",
-    icon: <IoIcons.IoIosPaper />,
+    icon: <IoIcons.IoIosHeart />,
     cName: "nav-text",
    },
 
    {
     title: "SignIn",
     path: "/signin",
-    icon: <IoIcons.IoIosPaper />,
+    icon: <IoIcons.IoIosPerson />,
     cName: "nav-text",
    },
 
    {
-    title: "List",
+    title: "Search",
     path: "/moviespage",
-    icon: <IoIcons.IoIosPaper />,
+    icon: <IoIcons.IoIosSearch />,
     cName: "nav-text",
    },
 
    {
-    title: "Users",
+    title: "WatchLists",
     path: "/users",
-    icon: <IoIcons.IoIosPaper />,
+    icon: <IoIcons.IoIosTv />,
     cName: "nav-text",
    },
 

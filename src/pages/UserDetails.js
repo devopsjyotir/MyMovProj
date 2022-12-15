@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import MovieSelectCard from '../components/MovieSelectCard'
 import { AddRelation, GetUserRelation } from '../services/RelationServices'
 import RelationCard from '../components/RelationCard'
+import '../styles/MovieCard.css'
 
 
 const UserDetails = () => {
@@ -53,10 +54,11 @@ const UserDetails = () => {
 
 
     let relationListRender = (
-        <div>
+        <div className='movies-grid'>
             {relationList.map((relation) => (
                 
                 <RelationCard key={relation.id} relation={relation} />
+                
                
             ))}
             
@@ -65,7 +67,7 @@ const UserDetails = () => {
 
 
     let addUserMovieRender = (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="course-form">
             <label>Movie</label>
             <select id='movieId' onChange={handleChange}>
                 {allMoviesList.map((movie) => (
@@ -87,13 +89,17 @@ const UserDetails = () => {
 
     let toRender = (
         <div>
-            <h1>{userName}</h1>
-            <div>
+        
+            <h1 className='playlist-name'>{userName}</h1>
+            <div className='playlist-container'>
+          
+            {addUserMovieRender}
+           
             {relationListRender}
             </div>
            
             
-            {addUserMovieRender}
+           
         </div>
     )
 

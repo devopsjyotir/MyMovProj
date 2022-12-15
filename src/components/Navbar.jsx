@@ -9,7 +9,7 @@ import { IconContext } from "react-icons";
 
 function Navbar({ authenticated, user, handleLogOut }) {
   let authenticatedOptions
-  const [sidebar, setSidebar] = useState(false);
+  const [sidebar, setSidebar] = useState(true);
 
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -27,9 +27,9 @@ function Navbar({ authenticated, user, handleLogOut }) {
 
   const publicOptions = (
     <nav>
-      <Link to="/">Home</Link>
+      {/* <Link to="/">Home</Link>
       <Link to="/register">Register</Link>
-      <Link to="/signin">Sign In</Link>
+      <Link to="/signin">Sign In</Link> */}
     </nav>
   )
 
@@ -42,9 +42,9 @@ function Navbar({ authenticated, user, handleLogOut }) {
           </Link>
         </div>
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-          <ul className="nav-menu-items" onClick={showSidebar}>
+          <ul className="nav-menu-items" onClick={!showSidebar}>
             <li className="navbar-toggle">
-              <Link to="#" className="menu-bars">
+              <Link to="#" className="menu-bars" onClick={showSidebar}>
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>

@@ -1,0 +1,130 @@
+.add-student-form {
+    margin-bottom: 20px;
+}
+.add-student-form input{
+    
+    border: none;
+    background-color: rgba(142, 142, 142, 0.122);
+    outline: none;
+    padding: 10px 30px;
+    color: black;
+    margin-left: 5px;
+}
+.add-student-form button{
+    
+    background-color: rgb(85, 10, 10);
+    border: none;
+    outline: none;
+    padding: 10px 30px;
+    color: #d4a373;
+    cursor: pointer;
+    transition: 0.8s;
+}
+.student-card-containter{
+    /* transform: translateY(50px); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 10px; */
+    margin-top: 30px;
+    margin-bottom: 40px;
+    padding: 5px 0;
+    /* background-color: rgb(85, 10, 10);; */
+
+}
+
+.student-card-containter ul{
+    position: relative;
+    width: 450px;
+    /* margin: 10px auto 0; */
+    box-sizing: border-box;
+    /* padding: 10px; */
+}
+
+.student-card-containter ul li {
+    display: flex;
+    /* background-color: rgba(255, 255, 255, .1); */
+    background-image: linear-gradient(to right, rgba(19, 0, 0, 0.801) , rgba(255, 255, 255, .1));
+padding: 10px;
+color: aquamarine;
+justify-content:center;
+transition: .5s;
+cursor: pointer;
+}
+
+.student-card-containter ul li:hover{
+    scale: 1.04;
+    color: rgb(163, 254, 224);
+ 
+}
+
+.student-card-containter ul li:nth-child(1){
+    background-color: rgba(0, 0, 0, 0.801);
+}
+
+
+
+.search-container-box{
+    height: 55px;
+    background: rgba(137, 137, 137, 0.265);
+    display: flex;
+    width: 600px;
+}
+
+.search-container-box input{
+    flex: 1;
+    border: none;
+    background-color: rgba(209, 209, 209, 0);
+    outline: none;
+padding-left: 9px;
+    color: rgb(0, 0, 0);
+}
+
+.search-container-box button{
+    background-color: rgb(85, 10, 10);
+    border: none;
+    outline: none;
+    padding: 10px 30px;
+  color: aquamarine;
+    cursor: pointer;
+    transition: 0.8s;
+}
+
+.search-container-box button:hover, .add-student-form button:hover{
+    color: white;
+
+    background-color: black;
+  
+}
+
+body{
+    background: #00171f;
+}
+.search-container-main{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.circle{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 50px;
+    font-family: roboto, arial;
+    color: rgb(64, 199, 154);
+    /* line-height: 500px; */
+    text-align: center;
+  /* background-color: rgb(10, 105, 73); */
+  cursor: pointer;
+  background-image: linear-gradient(to right, rgba(19, 0, 0, 0.801) , rgba(255, 255, 255, .1));
+}
+
+span .name{
+    font-size: 10px;
+}

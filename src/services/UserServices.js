@@ -21,3 +21,12 @@ export const AddUser = async (data) => {
     throw error;
   }
 };
+
+export const UpdateUserList = async (id) => {
+  try {
+    let response = await axios.put(`http://localhost:3001/api/users/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
